@@ -3,7 +3,7 @@ const FooterComponent = () => {
   return (
     <div>
         <footer className='footer'>
-            <span className="text-muted">All rights reserved 2023 @KJ</span>
+            <span >All rights reserved 2023 @KJ</span>
         </footer>
     </div>
   )
