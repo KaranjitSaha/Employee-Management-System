@@ -15,4 +15,4 @@
         state: started
 
     - name: Running container
-      shell: docker create -it --name calculator karanjit708/calculator
+      shell: docker create -it --name emsBackend karanjit708/employee_management_system_backend101
