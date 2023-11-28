@@ -1,94 +1,47 @@
-# services:
-#   mysqldb:
-#     image: "mysql"
-#     container_name: mysqldb
-#     restart: always
-#     volumes:
-#       - mysql-data:/var/lib/mysql
-#     environment:
-#       MYSQL_ROOT_PASSWORD: Kota@2020
-#       MYSQL_DATABASE: EMS
-#       MYSQL_USER: root
-#       MYSQL_PASSWORD: Kota@2020
-#     ports:
-#       - "3300:3300"
-# #    networks:
-# #      - backend
-
-#   spring-app:
-#     image: "karanjit708/employee_management_system_backend101:latest"
-#     restart: always
-#     ports:
-#       - "8082:8082"
-#     depends_on:
-#       - mysqldb
-#     container_name: backend_container
-#     environment:
-#       SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/EMS?useSSL=false&&allowPublicKeyRetrieval=true
-#       SPRING_DATASOURCE_USERNAME: root
-#       SPRING_DATASOURCE_PASSWORD: Kota@2020
-#     volumes:
-#       - /logs:/logs
-# #    networks: # Networks to join (Services on the same network can communicate with each other using their name)
-# #      - backend
-# #      - frontend
-
-# #   reactjs:
-# #     image: "shubhanshi/mefrontend:v3"
-# #     restart: always
-# #     container_name: frontend_container
-# # #    depends_on:
-# # #      - spring-app
-# # #    command:
-# # #      - npm start
-# #     ports:
-# #       - "3000:3000"
-# # #    networks:
-# # #      - frontend
-
-# volumes:
-#   mysql-data:
-#     driver: local
-
-# #networks:
-# #  backend:
-# #  frontend:
-
-# version: '3'
 services:
   mysqldb:
     image: "mysql"
     container_name: mysqldb
     restart: always
-    # volumes:
-    #   - mysql-data:/var/lib/mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: Kota@2020
       MYSQL_DATABASE: EMS
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Kota@2020
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: Kota@2020
     ports:
-      - "3300:3300"
+      - "3306:3306"
+  
+  
   frontend:
     image: frontend:latest
     restart: always
-    environment:
-      PORT: 3000
+    container_name: frontend
+    # environment:
+    #   PORT: 3000
       # PROXY_API: http://playground-web-backend:8080/
     ports:
-      - 3000:3000
+      - "3000:3000"
+  
+  
   spring-app:
-    image: "karanjit708/employee_management_system_backend101:latest"
+    image: "backend:latest"
+    #"karanjit708/employee_management_system_backend101:latest"
     restart: always
     ports:
       - "8082:8082"
     depends_on:
       - mysqldb
-    container_name: backend_container
+    container_name: backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/EMS?useSSL=false&&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/EMS?useSSL=false&&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Kota@2020
-    # volumes:
-    #   - /logs:/logs
+    volumes:
+      - /logs:/logs
+
+volumes:
+  mysql-data:
+    driver: local
 
