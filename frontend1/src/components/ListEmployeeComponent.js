@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import EmployeeService from '../services/EmployeeService'
 import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import './ListEmployeeComponent.css'; // Import your custom CSS file
 
 const ListEmployeeComponent = () => {
     const [employees, setEmployees] = useState([])
