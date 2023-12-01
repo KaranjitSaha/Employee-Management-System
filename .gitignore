@@ -55,3 +55,6 @@ build/
 /frontend1/npm-debug.log*
 /frontend1/yarn-debug.log*
 /frontend1/yarn-error.log*
+
+
+/log.txt

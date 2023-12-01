@@ -6,10 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @SpringBootApplication
 public class EmployeeManagementSystemApplication implements CommandLineRunner {
 
+	private static final Logger logger =
+            LogManager.getLogger(EmployeeManagementSystemApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeManagementSystemApplication.class, args);
 	}
@@ -19,6 +23,7 @@ public class EmployeeManagementSystemApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String ...args) throws Exception{
+		logger.info("Spring Application Running");
 		// Employee employee =new Employee();
 		// employee.setFirstName("Ramesh");
 		// employee.setLastName("Fadatare");
