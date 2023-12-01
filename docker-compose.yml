@@ -16,7 +16,7 @@ services:
   
   
   frontend:
-    image: karanjit708/frontend:latest
+    image: karanjit708/frontend-image:latest
     restart: always
     container_name: frontend
     # environment:
@@ -29,7 +29,7 @@ services:
   
   
   spring-app:
-    image: "karanjit708/backend:latest"
+    image: "karanjit708/backend-image:latest"
     #"karanjit708/employee_management_system_backend101:latest"
     restart: always
     ports:
