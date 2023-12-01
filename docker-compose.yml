@@ -1,17 +1,17 @@
 services:
-  mysqldb:
-    image: "mysql"
-    container_name: mysqldb
-    restart: always
-    volumes:
-      - mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: Kota@2020
-      MYSQL_DATABASE: EMS
-      # MYSQL_USER: root
-      # MYSQL_PASSWORD: Kota@2020
-    ports:
-      - "3306:3306"
+  # mysqldb:
+  #   image: "mysql"
+  #   container_name: mysqldb
+  #   restart: always
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: Kota@2020
+  #     MYSQL_DATABASE: EMS
+  #     # MYSQL_USER: root
+  #     # MYSQL_PASSWORD: Kota@2020
+  #   ports:
+  #     - "3306:3306"
   
   
   frontend:
