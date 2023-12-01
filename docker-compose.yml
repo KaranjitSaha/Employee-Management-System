@@ -49,3 +49,7 @@ volumes:
   mysql-data:
     driver: local
 
+networks:
+  my-network:
+    driver: bridge
+
