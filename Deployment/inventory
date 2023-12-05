@@ -1,2 +1,2 @@
 [Systummm]
-bhavjyot ansible_host=192.168.86.70
+bhavjyot ansible_host=192.168.86.70 ansible_user=bhavjyot
