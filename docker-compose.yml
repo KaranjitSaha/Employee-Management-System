@@ -1,27 +1,28 @@
-
+version: '3'
 services:
-  # mysqldb:
-  #   image: "mysql"
-  #   container_name: mysqldb
-  #   restart: always
-  #   volumes:
-  #     - mysql-data:/var/lib/mysql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: Kota@2020
-  #     MYSQL_DATABASE: EMS
-  #     # MYSQL_USER: root
-  #     # MYSQL_PASSWORD: Kota@2020
-  #   ports:
-  #     - "3306:3306"
-  
+  mysqldb:
+    image: "mysql"
+    container_name: mysqldb
+    restart: always
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Kota@2020
+      MYSQL_DATABASE: EMS
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: Kota@2020
+    ports:
+      - "3306:3306"
+    networks:
+      - my-network
   
   frontend:
     image: karanjit708/frontend-image:latest
     # restart: always
     container_name: frontend
-    # environment:
-    #   PORT: 3000
-      # PROXY_API: http://playground-web-backend:8080/
+    environment:
+      PORT: 3000
+      PROXY_API: http://playground-web-backend:8080/
     ports:
       - "3000:3000"
     networks:
@@ -31,14 +32,14 @@ services:
   spring-app:
     image: "karanjit708/backend-image:latest"
     #"karanjit708/employee_management_system_backend101:latest"
-    # restart: always
+    restart: always
     ports:
       - "8082:8082"
-    # depends_on:
-    #   - mysqldb
+    depends_on:
+      - mysqldb
     container_name: backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/EMS?useSSL=false&&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/EMS?createDatabaseIfNotExist=true&&useSSL=false&&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Kota@2020
     volumes:

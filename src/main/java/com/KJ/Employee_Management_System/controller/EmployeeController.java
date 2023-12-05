@@ -18,11 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin("*")//This makes the api visible to all ports
 
 @RestController//This makes this class able to make rest api calls. So all REST API related
 // queries will now be handled by this class.
+@CrossOrigin("*")//This makes the api visible to all ports
 @RequestMapping("/api/v1/employees") // Base url for all the REST api queries
+
 public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
