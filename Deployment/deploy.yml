@@ -1,6 +1,7 @@
 ---
 - name: Deploy docker images
-  hosts: localhost
+  hosts: Paji
+  # hosts: localhost
   # hosts: all
 
   tasks:
