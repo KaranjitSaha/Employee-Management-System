@@ -28,8 +28,8 @@ pipeline {
         stage('Stage 0.1: Run MySQL Container') {
             steps {
                 script {
-                    // sh  'docker container stop mysqldb'
-                    // sh  'docker container rm mysqldb'
+                    sh  'docker container stop mysqldb'
+                    sh  'docker container rm mysqldb'
                     sh  'docker run --name mysqldb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -d -v "/var/lib/mysql" --network=${NETWORK} mysql:latest'
                 }
             }
@@ -71,7 +71,6 @@ pipeline {
                 echo 'Pushing backend Docker image to DockerHub'
                 script {
                     docker.withRegistry('', 'DockerCred') {
-                        // docker.image("${backend}").push()
                         sh 'docker push karanjit708/${backend}'
                     }
                 }
@@ -83,7 +82,6 @@ pipeline {
                 echo 'Pushing frontend Docker image to DockerHub'
                 script {
                     docker.withRegistry('', 'DockerCred') {
-                        // docker.image("${frontend}").push()
                         sh 'docker push karanjit708/${frontend}'
                     }
                 }
@@ -101,16 +99,9 @@ pipeline {
 
         stage('Stage 8: Ansible Deployment') {
             steps {
-                ansiblePlaybook(
-                    becomeUser: null,
-                    colorized: true,
-                    credentialsId: 'localhost',
-                    disableHostKeyChecking: true,
-                    installation: 'Ansible',
-                    inventory: 'Deployment/inventory',
-                    playbook: 'Deployment/deploy.yml',
-                    sudoUser: null
-                )
+                dir('Deployment'){
+                    sh 'ansible-playbook -i inventory deploy.yml'
+                }
             }
         }
     }
