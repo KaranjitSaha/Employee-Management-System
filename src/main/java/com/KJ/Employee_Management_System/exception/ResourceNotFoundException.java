@@ -12,6 +12,7 @@ public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message){
         
         super(message);
-        logger.warn("Resource Not Found Exception");
+        // logger.warn("Resource Not Found Exception");
+        logger.error("This is an error message");
     }
 }
