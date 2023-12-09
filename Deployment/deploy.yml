@@ -18,5 +18,5 @@
     - name: Run the pulled Docker images in detached mode
       command: docker-compose up -d --build
 
-    - name: Prune unwanted images and containers
-      command: docker container prune -f && docker image prune -f
+    - name: Prune unwanted images
+      command: docker image prune --force
