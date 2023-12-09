@@ -23,7 +23,8 @@ public class EmployeeManagementSystemApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String ...args) throws Exception{
-		logger.info("Spring Application Running");
+		logger.debug("This is a debug message"); // DEBUG level
+        logger.info("Spring Application Running"); // INFO level
 		// Employee employee =new Employee();
 		// employee.setFirstName("Ramesh");
 		// employee.setLastName("Fadatare");
@@ -35,6 +36,9 @@ public class EmployeeManagementSystemApplication implements CommandLineRunner {
 		// employee1.setLastName("Cena");
 		// employee1.setEmailId("cena@gmail.com");
 		// employeeRepository.save(employee1);
+
+		logger.warn("This is a warning message"); // WARN level
+        logger.error("This is an error message"); // ERROR level
 	}
 
 }
