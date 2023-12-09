@@ -1,17 +1,17 @@
 version: '3'
 services:
-  mysqldb:
-    image: "mysql"
-    container_name: mysqldb
-    volumes:
-      - mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: Kota@2020
-      MYSQL_DATABASE: EMS
-    ports:
-      - "3306:3306"
-    networks:
-      - my-network
+  # mysqldb:
+  #   image: "mysql"
+  #   container_name: mysqldb
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: Kota@2020
+  #     MYSQL_DATABASE: EMS
+  #   ports:
+  #     - "3306:3306"
+  #   networks:
+  #     - my-network
   
   frontend:
     image: karanjit708/frontend-image:latest
