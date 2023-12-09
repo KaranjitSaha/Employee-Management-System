@@ -5,6 +5,7 @@ import HeaderComponent from './components/HeaderComponent';
 import ListEmployeeComponent from './components/ListEmployeeComponent';
 import AddEmployeeComponent from './components/AddEmployeeComponent';
 import LoginComponent from './components/LoginComponent';
+import SignupComponent from './components/SignupComponent';
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <BrowserRouter>
         <HeaderComponent />
         <Routes>
-          <Route exact path="/" element={<LoginComponent />} />
+        // <Route path="/signup" element={<SignupComponent />} />
+          <Route exact path="/" element={<SignupComponent />} />
+          <Route exact path="/login" element={<LoginComponent />} />
           <Route path="/employees" element={<ListEmployeeComponent />} />
           <Route path="*" element={<ListEmployeeComponent />} />
           <Route path='/add-employee' element={<AddEmployeeComponent/>} />
@@ -28,33 +31,30 @@ function App() {
 
 export default App;
 
-// import './App.css';
+
+// // App.js
+
+// import React from 'react';
 // import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import FooterComponent from './components/FooterComponent';
 // import HeaderComponent from './components/HeaderComponent';
 // import ListEmployeeComponent from './components/ListEmployeeComponent';
 // import AddEmployeeComponent from './components/AddEmployeeComponent';
 // import LoginComponent from './components/LoginComponent';
+// import SignupComponent from './components/SignupComponent';
 
 // function App() {
-//   return (
+//   return ( 
 //     <div>
 //       <Router>
 //         <HeaderComponent />
 //         <Routes>
+//         <Route path="/signup" element={<SignupComponent />} />
 //           <Route path="/login" element={<LoginComponent />} />
-//           <Route
-//             path="/"
-//             element={
-//               <Routes>
-//                 <Route index element={<ListEmployeeComponent />} />
-//                 <Route path="employees" element={<ListEmployeeComponent />} />
-//                 <Route path="*" element={<ListEmployeeComponent />} />
-//                 <Route path="add-employee" element={<AddEmployeeComponent />} />
-//                 <Route path="edit-employee/:id" element={<AddEmployeeComponent />} />
-//               </Routes>
-//             }
-//           />
+//           <Route path="/employees" element={<ListEmployeeComponent />} />
+//           <Route path='/add-employee' element={<AddEmployeeComponent />} />
+//           <Route path='/edit-employee/:id' element={<AddEmployeeComponent />} />
+//           <Route path="*" element={<ListEmployeeComponent />} />
 //         </Routes>
 //         <FooterComponent />
 //       </Router>
