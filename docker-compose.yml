@@ -26,8 +26,8 @@ services:
     image: "karanjit708/backend-image:latest"
     ports:
       - "8082:8082"
-    depends_on:
-      - mysqldb
+    # depends_on:
+    #   - mysqldb
     container_name: backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/EMS?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
